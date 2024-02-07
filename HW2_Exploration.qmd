@@ -138,3 +138,19 @@ sct_data %>%
     -   So, I had to turn the year/month column into a character string to break it apart into the month and year separately. I'm not actually sure how much of a problem that is going to be, but given how much trouble I had with Part 1 turning the numerical date into a date, I might have an issue. I do think the as.Date feature in R takes a character string and makes in into a date but i will see if I need to do that.
 
     -   Another issue I might run into is really trying to narrow down my question. The website I picked has so much energy data and this is the first time I've really played with this data myself. I might get a little too ambitious in trying to incorporate more data than is digestible into my visualizations.
+
+**Week 5 Discussion Plot**
+
+```{r}
+sct_data %>% 
+  filter(year >= 2000) %>% 
+  ggplot(aes(x = year, y = Value, fill = Description))+
+  geom_col()+
+  scale_fill_discrete(labels = c("Commercial Sector", "Industrial Sector", 
+                                 "Residential Sector", "Transportation Sector"))+
+  labs(title = "Annual Energy Consumption per Sector",
+       x = "Year",
+       y = "Total Energy Consumption (Trillion Btu)")+
+  scale_x_discrete(breaks = c(2000,2005,2010,2015,2020))+
+  scale_y_continuous(expand = c(0, 0))
+```
