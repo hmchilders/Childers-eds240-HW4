@@ -1,7 +1,9 @@
 ---
 title: "HW2_Exploration"
 author: "Heather Childers (she/her)"
-format: html
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 
@@ -146,8 +148,9 @@ sct_data %>%
   filter(year >= 2000) %>% 
   ggplot(aes(x = year, y = Value, fill = Description))+
   geom_col()+
-  scale_fill_discrete(labels = c("Commercial Sector", "Industrial Sector", 
-                                 "Residential Sector", "Transportation Sector"))+
+  scale_fill_brewer(labels = c("Commercial Sector", "Industrial Sector", 
+                                 "Residential Sector", "Transportation Sector"), 
+                    type = "qual", palette = 7)+
   labs(title = "Annual Energy Consumption per Sector",
        x = "Year",
        y = "Total Energy Consumption (Trillion Btu)")+
